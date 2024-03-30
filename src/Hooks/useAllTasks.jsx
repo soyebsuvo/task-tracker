@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query"
 import axios from "axios"
 
 export default function useAllTasks(assignee, priority , start_date , end_date) {
-    const parameter = `?assignee=${assignee}&priority=${priority}&startDate=${start_date}&endDate=${end_date}`;
+    const parameter = `&assignee=${assignee}&priority=${priority}&startDate=${start_date}&endDate=${end_date}`;
     const { isPending, error, data : tasks , refetch} = useQuery({
         queryKey: ['tasks','pending','inProgress','completed','deployed','deffered'],
         queryFn: async () => {
