@@ -14,6 +14,7 @@ export default function AllTasks() {
     const [start_date, setStart_date] = useState("");
     const [end_date, setEnd_date] = useState("");
     const [isPending, , tasks, refetch] = useAllTasks(assignee, priority, start_date, end_date);
+    console.log(assignee, priority, start_date, end_date)
     // const [task , setTask] = useState({});
     const axiosPublic = useAxiosPublic();
     console.log(tasks?.pending?.data)
@@ -88,7 +89,7 @@ export default function AllTasks() {
                 <div className="flex justify-between items-center pr-4">
                     <div className="px-6 py-4 flex gap-3">
                         <div>
-                            Filter By : <input value={assignee} onChange={(e) => {setAssignee(e.target.value) ; refetch()}} className="rounded bg-[#F9F7FC] px-1" type="text" name="name" id="name" placeholder="Assignee Name" />
+                            Filter By : <input value={assignee} onChange={(e) => {setAssignee(e.target.value) }} className="rounded bg-[#F9F7FC] px-1" type="text" name="name" id="name" placeholder="Assignee Name" />
                         </div>
                         <select value={priority} onChange={(e) => {setPriority(e.target.value);refetch()}} className="rounded bg-[#F9F7FC] px-1" name="priority" id="priority">
                             <option value="">Priority</option>
@@ -97,10 +98,10 @@ export default function AllTasks() {
                             <option value="P2">P2</option>
                         </select>
                         <div>
-                            From : <input value={start_date} onClick={(e) => {setStart_date(e.target.value) ; refetch()}} className="rounded bg-[#F9F7FC] px-1" type="date" name="date" id="date" />
+                            From : <input onClick={(e) => {setStart_date(e.target.value) }} className="rounded bg-[#F9F7FC] px-1" type="date" name="date" id="date" />
                         </div>
                         <div>
-                            To : <input value={end_date} onClick={(e) => {setEnd_date(e.target.value); refetch()}} className="rounded bg-[#F9F7FC] px-1" type="date" name="date" id="date" />
+                            To : <input onClick={(e) => {setEnd_date(e.target.value)}} className="rounded bg-[#F9F7FC] px-1" type="date" name="date" id="date" />
                         </div>
                     </div>
                     <div>
@@ -143,7 +144,7 @@ export default function AllTasks() {
                     </div>
                 </div>
                 <div className="px-6">
-                    <div>Sort By Priority: <select onChange={(e) => {setPriority(e.target.value); refetch()}} className="rounded bg-[#F9F7FC] px-1" name="priority" id="priority">
+                    <div>Sort By Priority: <select onChange={(e) => {setPriority(e.target.value);refetch()}} className="rounded bg-[#F9F7FC] px-1" name="priority" id="priority">
                         {/* <option value="">Priority</option> */}
                         <option value="P0">P0</option>
                         <option value="P1">P1</option>
