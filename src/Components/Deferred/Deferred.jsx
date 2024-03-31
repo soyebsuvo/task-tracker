@@ -8,7 +8,7 @@ export default function Deferred({ tasks, handleDelete, handleUpdate }) {
                 <h3 className="text-center py-1 font-bold bg-[#F68871] text-white rounded-t-2xl sticky top-0 z-50">Deffered</h3>
                 <div>
                     {
-                        tasks?.deferred?.data?.map(item => <div key={item?._id} className="p-2">
+                        tasks?.deferred?.data?.map(item => <div title={`From ${item?.start_date} To ${item?.end_date}`} key={item?._id} className="p-2">
                             <div className="p-3 bg-[#EEE] rounded">
                                 <div className="flex justify-between items-center mb-1">
                                     <h3 className="font-bold">{item?.title}</h3>

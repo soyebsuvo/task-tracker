@@ -8,7 +8,7 @@ export default function Completed({ tasks, handleDelete, handleUpdate }) {
                 <h3 className="text-center py-1 font-bold bg-[#42A81E] text-white rounded-t-2xl sticky top-0 z-50">Completed</h3>
                 <div>
                     {
-                        tasks?.completed?.data?.map(item => <div key={item?._id} className="p-2">
+                        tasks?.completed?.data?.map(item => <div title={`From ${item?.start_date} To ${item?.end_date}`} key={item?._id} className="p-2">
                             <div className="p-3 bg-[#EEE] rounded">
                                 <div className="flex justify-between items-center mb-1">
                                     <h3 className="font-bold">{item?.title}</h3>

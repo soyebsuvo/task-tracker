@@ -9,7 +9,7 @@ export default function Pending({tasks , handleDelete , handleUpdate}) {
                 {/* tasks */}
                 <div>
                     {
-                        tasks?.pending?.data?.map(item => <div key={item?._id} className="p-2">
+                        tasks?.pending?.data?.map(item => <div title={`From ${item?.start_date} To ${item?.end_date}`} key={item?._id} className="p-2">
                             <div className="p-3 bg-[#EEE] rounded">
                                 <div className="flex justify-between items-center mb-1">
                                     <h3 className="font-bold">{item?.title}</h3>

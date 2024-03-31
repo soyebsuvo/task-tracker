@@ -1,9 +1,9 @@
-import moment from "moment";
 import PropTypes from 'prop-types';
 import { useForm } from "react-hook-form";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 import { IoMdClose } from "react-icons/io";
+import moment from 'moment';
 
 export default function AddTask({ refetch }) {
     const axiosPublic = useAxiosPublic();
@@ -15,7 +15,9 @@ export default function AddTask({ refetch }) {
     const onSubmit = async (data) => {
         console.log(data)
         const time = moment().format('L');
-        const mainTime = time.split("/").join("-");
+        const times = time.split("/");
+        const mainTime = `${times[2]}-${times[0]}-${times[1]}`
+        console.log(mainTime)
         const postDoc = {
             title: data.title,
             priority: data.priority,
@@ -62,7 +64,7 @@ export default function AddTask({ refetch }) {
                             </div>
                             <div className="flex justify-end items-center gap-2 mt-2">
                                 <button type="submit" className="bg-[#216A9E] text-white px-5 rounded py-1 text-sm mt-1">Submit</button>
-                                <button className="bg-[#216A9E] text-white px-5 rounded py-1 text-sm mt-1">Reset</button>
+                                {/* <button className="bg-[#216A9E] text-white px-5 rounded py-1 text-sm mt-1">Reset</button> */}
                             </div>
                         </form>
 
