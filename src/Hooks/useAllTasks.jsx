@@ -4,7 +4,7 @@ import axios from "axios"
 export default function useAllTasks(assignee, priority , start_date , end_date) {
     const parameter = `&assignee=${assignee}&priority=${priority}&startDate=${start_date}&endDate=${end_date}`;
     const { isPending, error, data : tasks , refetch} = useQuery({
-        queryKey: ['tasks','pending','inProgress','completed','deployed','deffered'],
+        queryKey: [priority,assignee],
         queryFn: async () => {
             const pending = await axios.get(`http://localhost:5000/tasks?status=Pending${parameter}`)
             const inProgress = await axios.get(`http://localhost:5000/tasks?status=In Progress${parameter}`)
