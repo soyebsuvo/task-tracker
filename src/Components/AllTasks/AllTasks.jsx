@@ -1,6 +1,4 @@
-// import { BsThreeDotsVertical } from "react-icons/bs";
 import useAllTasks from "../../Hooks/useAllTasks";
-// import Loader from "../Loader/Loader";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 import { useState } from "react";
@@ -10,7 +8,6 @@ import Completed from "../Completed/Completed";
 import Deployed from "../Deployed/Deployed";
 import Deferred from "../Deferred/Deferred";
 import AddTask from "../AddTask/AddTask";
-// import { useState } from "react";
 export default function AllTasks() {
     const [assignee, setAssignee] = useState("");
     const [priority, setPriority] = useState("");
@@ -18,7 +15,6 @@ export default function AllTasks() {
     const [end_date, setEnd_date] = useState("");
     const [, , tasks, refetch] = useAllTasks(assignee, priority, start_date, end_date);
     console.log(assignee, priority, start_date, end_date)
-    // const [task , setTask] = useState({});
     const axiosPublic = useAxiosPublic();
     console.log(tasks?.pending?.data)
 
@@ -52,13 +48,11 @@ export default function AllTasks() {
         }
     }
 
-    // if (isPending) {
-    //     return <Loader></Loader>
-    // }
     return (
         <div className="mx-auto h-full max-w-7xl px-20">
             <div className="border-2 border-white rounded-2xl h-full">
                 <div className="flex justify-between items-center pr-4">
+                    {/* filtering section starts from here  */}
                     <div className="px-6 py-4 flex gap-3">
                         <div>
                             Filter By : <input value={assignee} onChange={(e) => setAssignee(e.target.value)} className="rounded bg-[#F9F7FC] px-1" type="text" name="name" id="name" placeholder="Assignee Name" />
@@ -76,11 +70,14 @@ export default function AllTasks() {
                             To : <input onClick={(e) => setEnd_date(e.target.value)} className="rounded bg-[#F9F7FC] px-1" type="date" name="date" id="date" />
                         </div>
                     </div>
+                    {/* filter ends here  */}
                     <div>
+                        {/* Add button with modal  */}
                         <AddTask></AddTask>
                     </div>
                 </div>
                 <div className="px-6">
+                    {/* sort by priority  */}
                     <div>Sort By Priority: <select value={priority} onChange={(e) => setPriority(e.target.value)} className="rounded bg-[#F9F7FC] px-1" name="priority" id="priority">
                         {/* <option value="">Priority</option> */}
                         <option value="P0">P0</option>
@@ -88,6 +85,7 @@ export default function AllTasks() {
                         <option value="P2">P2</option>
                     </select></div>
                 </div>
+                {/* tasks  */}
                 <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-5 h-full p-3">
                     <Pending tasks={tasks} handleDelete={handleDelete} handleUpdate={handleUpdate} />
                     <InProgress tasks={tasks} handleDelete={handleDelete} handleUpdate={handleUpdate} />
