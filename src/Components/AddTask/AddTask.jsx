@@ -13,11 +13,11 @@ export default function AddTask({ refetch }) {
         handleSubmit,
     } = useForm();
     const onSubmit = async (data) => {
-        console.log(data)
+        // console.log(data)
         const time = moment().format('L');
         const times = time.split("/");
         const mainTime = `${times[2]}-${times[0]}-${times[1]}`
-        console.log(mainTime)
+        // console.log(mainTime)
         const postDoc = {
             title: data.title,
             priority: data.priority,

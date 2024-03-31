@@ -14,16 +14,16 @@ export default function AllTasks() {
     const [start_date, setStart_date] = useState("");
     const [end_date, setEnd_date] = useState("");
     const [, , tasks, refetch] = useAllTasks(assignee, priority, start_date, end_date);
-    console.log(assignee, priority, start_date, end_date)
+    // console.log(assignee, priority, start_date, end_date)
     const axiosPublic = useAxiosPublic();
-    console.log(tasks?.pending?.data)
+    // console.log(tasks?.pending?.data)
 
     const handleUpdate = async (event, id) => {
         event.preventDefault();
         const priority = event.target.priority.value;
         const status = event.target.status.value;
         const res = await axiosPublic.patch(`/tasks/${id}`, { priority, status })
-        console.log(res.data);
+        // console.log(res.data);
         if (res.data.modifiedCount) {
             refetch()
             document.getElementById(id).close()
