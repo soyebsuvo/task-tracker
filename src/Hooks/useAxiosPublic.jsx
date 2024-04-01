@@ -2,7 +2,7 @@ import axios from "axios"
 
 export default function useAxiosPublic() {
     const axiosPublic = axios.create({
-        baseURL : "http://localhost:5000"
+        baseURL : "https://task-tracker-server-steel.vercel.app"
     })
   return axiosPublic;
 }
